@@ -13,7 +13,7 @@ import java.util.Timer;
 import javax.swing.*;
 
 public class GameVisualizer extends JPanel {
-    private Timer m_timer = initTimer();
+    public Timer m_timer = initTimer();
 
     private static Timer initTimer() {
         Timer timer = new Timer("events generator", true);
@@ -21,7 +21,6 @@ public class GameVisualizer extends JPanel {
     }
 
     public ArrayList<Bug> bugs = new ArrayList<>();
-
     public Targets targets = new Targets();
 
     public volatile double currentWidth;
@@ -37,6 +36,7 @@ public class GameVisualizer extends JPanel {
                 onRedrawEvent();
             }
         }, 0, 50);
+
         m_timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -54,6 +54,7 @@ public class GameVisualizer extends JPanel {
         });
         setDoubleBuffered(true);
     }
+
 
     public void stopTimer() {
         m_timer.cancel();
@@ -81,7 +82,7 @@ public class GameVisualizer extends JPanel {
         bugs.add(new Bug(50, 300, 0, Color.CYAN, "CYAN"));
         bugs.add(new Bug(300, 50, 0, Color.ORANGE, "ORANGE"));
         bugs.add(new Bug(300, 300, 0, Color.PINK, "PINK"));
-        
+
         targets.addTarget(new Point(150, 50));
     }
 

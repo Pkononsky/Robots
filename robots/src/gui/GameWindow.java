@@ -21,4 +21,5 @@ public class GameWindow extends JInternalFrame
     public GameVisualizer getVisualizer(){
         return m_visualizer;
     }
+
 }

@@ -3,7 +3,7 @@ package gui;
 import javax.management.*;
 import java.awt.*;
 
-public class Bug implements BugMBean {
+public class Bug {
 
     private volatile double m_robotPositionX;
     private volatile double m_robotPositionY;
@@ -54,13 +54,13 @@ public class Bug implements BugMBean {
         alive = false;
     }
 
-    @Override
-    public Point getPositions() {
-        return new Point((int)m_robotPositionX, (int)m_robotPositionX);
-    }
-
-    @Override
-    public boolean getAlive() {
-        return alive;
+    public String getStringState(){
+        StringBuilder state = new StringBuilder();
+        state.append(m_robotPositionX);
+        state.append(';');
+        state.append(m_robotPositionY);
+        state.append(';');
+        state.append(m_robotDirection);
+        return state.toString();
     }
 }

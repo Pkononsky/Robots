@@ -3,7 +3,7 @@ package gui;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Targets implements TargetsMBean {
+public class Targets {
 
     public volatile ArrayList<Point> targets = new ArrayList<>();
 
@@ -19,13 +19,14 @@ public class Targets implements TargetsMBean {
         return targets;
     }
 
-    @Override
-    public int getTargetCount() {
-        return targets.size();
-    }
-
-    @Override
-    public ArrayList<Point> targets() {
-        return targets;
+    public String getStringState(){
+        StringBuilder state = new StringBuilder();
+        for (Point target : targets) {
+            state.append(target.x);
+            state.append(";");
+            state.append(target.y);
+            state.append("/");
+        }
+        return state.toString();
     }
 }
